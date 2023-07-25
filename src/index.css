@@ -37,6 +37,7 @@ body {
   margin: 0 1rem;
   list-style-type: none;
 }
+
 .nav-link:hover {
   text-decoration: underline;
   color: blue;
@@ -46,6 +47,7 @@ body {
   text-decoration: underline;
   color: blue;
 }
+
 /****** NavBar end here ********/
 
 img {
