@@ -1,33 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit';
-import img from '../../assets/space-x1.jpg';
-
-const imgSpace = img;
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  rockets: [
-    {
-      id: 1,
-      img: imgSpace,
-      title: 'Falcon 1',
-      text: 'The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth.',
-    },
-    {
-      id: 2,
-      img: imgSpace,
-      title: 'Falcon 2',
-      text: 'The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth.',
-    },
-  ],
+  rockets: [],
   isLoading: true,
   error: '',
 };
+
+const url = 'https://api.spacexdata.com/v3/rockets';
+
+export const fetchRockets = createAsyncThunk('rockets/fetchRockets', async () => {
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data);
+  return data.map((rocket) => ({
+    id: rocket.id,
+    name: rocket.rocket_name,
+    type: rocket.rocket_type,
+      flickr_images: rocket.flickr_images,
+    text: rocket.description,
+  }));
+});
 const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
   reducers: {
-    setRockets: (state, action) => {
-      state.rockets = action.payload;
-    },
     toggleReservation: (state, action) => {
       const { rocketId, isReserved } = action.payload;
       const rocket = state.rockets.find((r) => r.id === rocketId);
@@ -35,6 +31,17 @@ const rocketsSlice = createSlice({
         rocket.reserved = isReserved;
       }
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchRockets.pending, (state) => {
+      state.isLoading = true;
+    }).addCase(fetchRockets.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.rockets = action.payload;
+    }).addCase(fetchRockets.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message;
+    });
   },
 });
 

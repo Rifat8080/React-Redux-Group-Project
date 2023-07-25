@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleReservation } from '../redux/rockets/rocketsSlice';
+import { fetchRockets, toggleReservation } from '../redux/rockets/rocketsSlice';
 
 const Rockets = () => {
   const rockets = useSelector((state) => state.rockets.rockets);
@@ -14,6 +14,9 @@ const Rockets = () => {
   });
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchRockets());
+  }, [dispatch]);
 
   const toggleReserved = (id) => {
     dispatch(
@@ -25,9 +28,9 @@ const Rockets = () => {
       <ul className="cards">
         {rockets.map((list) => (
           <li className="card" key={list.id}>
-            <img src={list.img} alt={list.title} />
+            <img src={list.flickr_images[0]} alt={list.name} />
             <div className="card-txt">
-              <h3>{list.title}</h3>
+              <h3>{list.name}</h3>
               <p>
                 {reservedStatus[list.id] && (
                   <span className="reserved">Reserved</span>
