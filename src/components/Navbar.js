@@ -6,7 +6,7 @@ const Navbar = () => {
   const links = [
     {
       id: 1,
-      path: '/rockets',
+      path: '/',
       text: 'Rockets',
     },
     {
@@ -27,7 +27,7 @@ const Navbar = () => {
         <div className="logo">
           <img src={planet} alt="Logo" />
           <h1>
-            <NavLink to="/">Space Traveler&apos;s Hub</NavLink>
+            <a href="/">Space Traveler&apos;s Hub</a>
           </h1>
         </div>
         <ul className="ulElement">
@@ -35,7 +35,6 @@ const Navbar = () => {
             <li key={link.id} className="nav-link">
               <NavLink
                 style={{ textDecoration: 'none', color: 'blue' }}
-                activeStyle={{ textDecoration: 'underline', color: 'blue' }}
                 to={link.path}
               >
                 {link.text}
