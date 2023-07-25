@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   min-height: 100vh;
   width: 100vw;
@@ -62,6 +63,10 @@ body {
   border-top: 1px solid #ccc;
 }
 
+img {
+  width: 13%;
+}
+
 .cards {
   display: flex;
   justify-content: center;
@@ -119,14 +124,4 @@ body {
   border-radius: 4px;
 }
 
-/* .cancel {
-  padding: 0.5rem 1rem;
-  background-color: #fff;
-  color: #000;
-  width: 100%;
-} */
 /****** container end here ********/
-
-img {
-  width: 13%;
-}
