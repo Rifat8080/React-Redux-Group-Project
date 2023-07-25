@@ -1,34 +1,29 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useState } from 'react';
-import imgSpace from '../assets/space-x1.jpg';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleReservation } from '../redux/rockets/rocketsSlice';
 
 const Rockets = () => {
-  const data = [
-    {
-      id: 1,
-      img: imgSpace,
-      title: 'Falcon 1',
-      text: 'The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth.',
-    },
-    {
-      id: 2,
-      img: imgSpace,
-      title: 'Falcon 2',
-      text: 'The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth.',
-    },
-  ];
-  const [reservedStatus, setReservedStatus] = useState({});
+  const rockets = useSelector((state) => state.rockets.rockets);
+  const reservedStatus = useSelector((state) => {
+    const status = {};
+    state.rockets.rockets.forEach((rocket) => {
+      status[rocket.id] = rocket.reserved || false;
+    });
+    return status;
+  });
+
+  const dispatch = useDispatch();
 
   const toggleReserved = (id) => {
-    setReservedStatus((prevStatus) => ({
-      ...prevStatus,
-      [id]: !prevStatus[id],
-    }));
+    dispatch(
+      toggleReservation({ rocketId: id, isReserved: !reservedStatus[id] }),
+    );
   };
   return (
     <section className="container-rocket">
       <ul className="cards">
-        {data.map((list) => (
+        {rockets.map((list) => (
           <li className="card" key={list.id}>
             <img src={list.img} alt={list.title} />
             <div className="card-txt">
