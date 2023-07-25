@@ -38,8 +38,18 @@ body {
   list-style-type: none;
 }
 
+.nav-link:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+  color: blue;
+}
+
 /****** NavBar end here ********/
 
 img {
-  width: 10%;
+  width: 13%;
 }
