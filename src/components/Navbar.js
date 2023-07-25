@@ -32,10 +32,9 @@ const Navbar = () => {
         </div>
         <ul className="ulElement">
           {links.map((link) => (
-            <li key={link.id} className="nav-link">
+            <li key={link.id} className="nav-link active">
               <NavLink
                 style={{ textDecoration: 'none', color: 'blue' }}
-                activeStyle={{ textDecoration: 'underline', color: 'blue' }}
                 to={link.path}
               >
                 {link.text}
