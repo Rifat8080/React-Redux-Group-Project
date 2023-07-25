@@ -1,7 +1,14 @@
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
 }
 
 /****** NavBar start here *******/
@@ -50,6 +57,81 @@ body {
 
 /****** NavBar end here ********/
 
+/****** container start here ********/
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.container-rocket {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  min-height: 100vh;
+  border-top: 1px solid #ccc;
+}
+
 img {
   width: 13%;
 }
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 1.2rem;
+}
+
+.card img {
+  width: 250px;
+}
+
+.card-txt {
+  margin: 1rem;
+}
+
+.card li {
+  list-style-type: none;
+}
+
+.reserved {
+  padding: 0.2rem 0.4rem;
+  margin: 0.8rem 0.8rem 0.8rem 0;
+  background-color: blue;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+}
+
+.btn {
+  padding: 5px 10px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  margin: 1rem auto;
+}
+
+.reserve {
+  background-color: blue;
+  color: white;
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+}
+
+.cancel {
+  background-color: white;
+  color: black;
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+}
+
+/****** container end here ********/
