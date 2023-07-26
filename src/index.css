@@ -159,13 +159,16 @@ img {
   margin-top: 1rem;
 }
 
+.table{
+  margin-top: 1rem;
+}
+
 .table li{
   list-style: none;
   width: 100%;
   border: 1px solid #000;
   border-radius: 0.5rem;
   padding: 1rem 10rem;
-  margin-top: 1rem;
 }
 
 
