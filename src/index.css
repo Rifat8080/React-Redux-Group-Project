@@ -140,7 +140,6 @@ img {
 }
 
 .reserve {
-  max-width: fit-content;
   padding: 0.5rem;
   background-color: rgb(2, 123, 255);
   cursor: pointer;
@@ -150,7 +149,6 @@ img {
 }
 
 .cancel {
-  max-width: fit-content;
   padding: 0.5rem;
   background-color: white;
   cursor: pointer;
