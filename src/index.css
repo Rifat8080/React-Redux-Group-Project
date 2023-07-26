@@ -16,6 +16,7 @@ body {
 }
 
 /****** NavBar start here *******/
+
 .navbar {
   padding: 1rem;
   display: flex;
@@ -160,6 +161,7 @@ img {
 /****** container end here ********/
 
 /****** Rockets profile start here ********/
+
 .myProfile {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -183,7 +185,6 @@ img {
   border: 1px solid #ccc;
   padding: 1rem 10rem;
 }
-
 
 /****** Rockets profile end here ********/
 
