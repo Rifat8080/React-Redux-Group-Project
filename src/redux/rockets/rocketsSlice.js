@@ -14,7 +14,7 @@ export const fetchRockets = createAsyncThunk(
   async () => {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data.map((rocket) => ({
       id: rocket.id,
       name: rocket.rocket_name,
@@ -23,7 +23,7 @@ export const fetchRockets = createAsyncThunk(
       text: rocket.description,
       reserved: false,
     }));
-  }
+  },
 );
 const rocketsSlice = createSlice({
   name: 'rockets',
@@ -31,9 +31,7 @@ const rocketsSlice = createSlice({
   reducers: {
     toggleReservation: (state, action) => {
       const { rocketId, isReserved } = action.payload;
-      state.rockets = state.rockets.map((rocket) =>
-        rocket.id === rocketId ? { ...rocket, reserved: isReserved } : rocket
-      );
+      state.rockets = state.rockets.map((rocket) => (rocket.id === rocketId ? { ...rocket, reserved: isReserved } : rocket));
     },
   },
 
