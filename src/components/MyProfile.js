@@ -1,2 +1,21 @@
-const MyProfile = () => <div>Empty page content</div>;
+/* eslint-disable max-len */
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+const MyProfile = () => {
+  const rockets = useSelector((state) => state.rockets.rockets.filter((rocket) => rocket.reserved === true));
+
+  return (
+    <section className="myProfile">
+      <div className="rockets-profile">
+        <h2>My Rockets</h2>
+        <ul className="table">
+          {rockets.map((rocket) => (
+            <li key={rocket.id}>{rocket.name}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+};
 export default MyProfile;
