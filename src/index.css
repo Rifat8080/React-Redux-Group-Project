@@ -166,8 +166,7 @@ img {
 .table li{
   list-style: none;
   width: 100%;
-  border: 1px solid #000;
-  border-radius: 0.5rem;
+  border: 1px solid #ccc;
   padding: 1rem 10rem;
 }
 
