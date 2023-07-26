@@ -11,12 +11,11 @@ const url = 'https://api.spacexdata.com/v3/rockets';
 export const fetchRockets = createAsyncThunk('rockets/fetchRockets', async () => {
   const response = await fetch(url);
   const data = await response.json();
-  console.log(data);
   return data.map((rocket) => ({
     id: rocket.id,
     name: rocket.rocket_name,
     type: rocket.rocket_type,
-      flickr_images: rocket.flickr_images,
+    flickr_images: rocket.flickr_images,
     text: rocket.description,
   }));
 });
@@ -26,10 +25,9 @@ const rocketsSlice = createSlice({
   reducers: {
     toggleReservation: (state, action) => {
       const { rocketId, isReserved } = action.payload;
-      const rocket = state.rockets.find((r) => r.id === rocketId);
-      if (rocket) {
-        rocket.reserved = isReserved;
-      }
+      state.rockets = state.rockets.map((rocket) => (rocket.id === rocketId
+        ? { ...rocket, reserved: isReserved }
+        : rocket));
     },
   },
   extraReducers: (builder) => {
