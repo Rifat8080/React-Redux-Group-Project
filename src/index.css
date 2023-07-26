@@ -79,12 +79,12 @@ body {
   border-top: 1px solid #ccc;
 }
 
-h3{
+h3 {
   font-family: 'Open Sans', sans-serif;
 }
 
 @media screen and (min-width: 768px) {
-  .container-rocket{
+  .container-rocket {
     padding: 2rem 6rem;
   }
 }
@@ -111,7 +111,7 @@ img {
   width: 250px;
 }
 
-.card-txt p{
+.card-txt p {
   margin: 1rem 0;
 }
 
@@ -121,64 +121,58 @@ img {
 
 .reserved {
   font-size: 11px;
-    border-radius: 0.2rem;
-    margin-right: 0.5rem;
-    padding: 0.08rem 0.28rem;
-    background-color: rgb(26, 161, 185);
-    color: white;
-    font-weight: 500;
+  border-radius: 0.2rem;
+  margin-right: 0.5rem;
+  padding: 0.08rem 0.28rem;
+  background-color: rgb(26, 161, 185);
+  color: white;
+  font-weight: 500;
 }
 
 .btn {
   padding: 0.5rem;
-    background-color: transparent;
-    cursor: pointer;
-    border-radius: 0.2rem;
-    color: white;
-    border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 0.2rem;
+  color: white;
+  border: transparent;
 }
 
 .reserve {
- max-width: fit-content;
-    padding: 0.5rem;
-    background-color: rgb(2, 123, 255);
-    cursor: pointer;
-    border-radius: 0.2rem;
-    color: white;
-    border: transparent;
+  max-width: fit-content;
+  padding: 0.5rem;
+  background-color: rgb(2, 123, 255);
+  cursor: pointer;
+  border-radius: 0.2rem;
+  color: white;
+  border: transparent;
 }
 
 .cancel {
   max-width: fit-content;
-    padding: 0.5rem;
-    background-color: white;
-    cursor: pointer;
-    border-radius: 0.2rem;
-    color: rgb(128, 135, 142);
-    border: 1px solid rgb(160, 165, 171);
+  padding: 0.5rem;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 0.2rem;
+  color: rgb(128, 135, 142);
+  border: 1px solid rgb(160, 165, 171);
 }
 
 /****** container end here ********/
-
-/****** Rockets profile start here ********/
-.rockets-profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
+.not-member {
+  background-color: #6c757d !important;
+  color: white;
+  padding: 4px 8px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 5px;
 }
 
-.table{
-  margin-top: 1rem;
+.member {
+  background-color: #5bc0de !important;
+  color: white;
+  padding: 4px 8px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 5px;
 }
-
-.table li{
-  list-style: none;
-  width: 100%;
-  border: 1px solid #ccc;
-  padding: 1rem 10rem;
-}
-
-
-/****** Rockets profile end here ********/
