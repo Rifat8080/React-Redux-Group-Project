@@ -11,12 +11,12 @@ const MyProfile = () => {
     <div className="container">
       <div className="row justify-content-evenly">
         <div className="col-12">
-          <h1 className="p-4">My Missions</h1>
+          <h1 className="p-1">My Missions</h1>
           <div>{!myMissions.length ? 'No Missions Joined' : ' '}</div>
           <div>
             {myMissions.map((mission) => (
               <div
-                className="border p-3 d-flex justify-content-between"
+                className="border p-3 d-flex justify-content-between align-items-center"
                 key={mission.id}
               >
                 <div>{mission.name}</div>
