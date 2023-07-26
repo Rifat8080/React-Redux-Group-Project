@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Open+Sans:wght@400;500;600;700&family=Roboto+Slab:wght@300;500;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -159,6 +160,35 @@ img {
 }
 
 /****** container end here ********/
+
+/****** Rockets profile start here ********/
+.myProfile {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.rockets-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.table {
+  margin-top: 1rem;
+}
+
+.table li {
+  list-style: none;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 1rem 10rem;
+}
+
+
+/****** Rockets profile end here ********/
+
 .not-member {
   background-color: #6c757d !important;
   color: white;

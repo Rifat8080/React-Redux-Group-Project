@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useSelector, useDispatch } from 'react-redux';
 import { joinMission } from '../redux/missions/missionSlice';
 
@@ -6,12 +7,10 @@ const MyProfile = () => {
   const missionsStore = useSelector((state) => state.missions);
   const { missions } = missionsStore;
   const myMissions = missions.filter((mission) => mission.joined === true);
-  const rockets = useSelector((state) =>
-    state.rockets.rockets.filter((rocket) => rocket.reserved === true)
-  );
+  const reservedRockets = useSelector((state) => state.rockets.rockets.filter((rocket) => rocket.reserved));
 
   return (
-    <>
+    <section className="myProfile">
       <div className="container">
         <div className="row justify-content-evenly">
           <div className="col-12">
@@ -41,12 +40,12 @@ const MyProfile = () => {
       <div className="rockets-profile">
         <h2>My Rockets</h2>
         <ul className="table">
-          {rockets.map((rocket) => (
+          {reservedRockets.map((rocket) => (
             <li key={rocket.id}>{rocket.name}</li>
           ))}
         </ul>
       </div>
-    </>
+    </section>
   );
 };
 
