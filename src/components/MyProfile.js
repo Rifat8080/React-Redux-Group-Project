@@ -39,7 +39,8 @@ const MyProfile = () => {
 
       <div className="rockets-profile">
         <h2>My Rockets</h2>
-        <ul className="table">
+        <p>{!reservedRockets.length ? 'No Rockets Reserved' : ''}</p>
+        <ul className="borderLi">
           {reservedRockets.map((rocket) => (
             <li key={rocket.id}>{rocket.name}</li>
           ))}

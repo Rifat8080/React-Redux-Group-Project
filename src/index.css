@@ -175,11 +175,7 @@ img {
   margin-top: 1rem;
 }
 
-.table {
-  margin-top: 1rem;
-}
-
-.table li {
+.borderLi li {
   list-style: none;
   width: 100%;
   border: 1px solid #ccc;
