@@ -2,7 +2,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-// eslint-disable-next-line padded-blocks
 const MyProfile = () => {
   const rockets = useSelector((state) => state.rockets.rockets.filter((rocket) => rocket.reserved === true));
 

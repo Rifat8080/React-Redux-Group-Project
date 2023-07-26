@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { NavLink } from 'react-router-dom';
 import planet from '../assets/planet.png';
 
