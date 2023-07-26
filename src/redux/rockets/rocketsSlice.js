@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -17,6 +18,7 @@ export const fetchRockets = createAsyncThunk('rockets/fetchRockets', async () =>
     type: rocket.rocket_type,
     flickr_images: rocket.flickr_images,
     text: rocket.description,
+    reserved: false,
   }));
 });
 const rocketsSlice = createSlice({
@@ -25,24 +27,25 @@ const rocketsSlice = createSlice({
   reducers: {
     toggleReservation: (state, action) => {
       const { rocketId, isReserved } = action.payload;
-      state.rockets = state.rockets.map((rocket) => (rocket.id === rocketId
-        ? { ...rocket, reserved: isReserved }
-        : rocket));
+      state.rockets = state.rockets.map((rocket) => (rocket.id === rocketId ? { ...rocket, reserved: isReserved } : rocket));
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchRockets.pending, (state) => {
-      state.isLoading = true;
-    }).addCase(fetchRockets.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.rockets = action.payload;
-    }).addCase(fetchRockets.rejected, (state, action) => {
-      state.isLoading = false;
-      state.error = action.error.message;
-    });
+    builder
+      .addCase(fetchRockets.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchRockets.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.rockets = action.payload;
+      })
+      .addCase(fetchRockets.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      });
   },
 });
 
-export const { setRockets, toggleReservation } = rocketsSlice.actions;
+export const { toggleReservation } = rocketsSlice.actions;
 
 export default rocketsSlice.reducer;
