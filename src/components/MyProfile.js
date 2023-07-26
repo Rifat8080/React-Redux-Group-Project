@@ -10,8 +10,8 @@ const MyProfile = () => {
   return (
     <div className="container">
       <div className="row justify-content-evenly">
-        <div className="col-6">
-          <h1 className="p-2">My Missions</h1>
+        <div className="col-12">
+          <h1 className="p-4">My Missions</h1>
           <div>{!myMissions.length ? 'No Missions Joined' : ' '}</div>
           <div>
             {myMissions.map((mission) => (
