@@ -1,0 +1,74 @@
+/* Added nav css */
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* Added nav img css */
+nav img {
+  width: 35px;
+}
+
+/* Added display, width, justify-content */
+nav ul {
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.nav-link a {
+  text-decoration: none;
+}
+
+.nav-link a.active {
+  text-decoration: underline;
+}
+
+.not-member {
+  background-color: #6c757d !important;
+  color: white;
+  padding: 4px 8px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.member {
+  background-color: #5bc0de !important;
+  color: white;
+  padding: 4px 8px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+/****** Rockets profile start here ********/
+
+.myProfile {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+
+.rockets-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.borderLi {
+  margin-top: 1rem;
+}
+
+.borderLi li {
+  list-style: none;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 1rem 10rem;
+}
+
+/****** Rockets profile end here ********/

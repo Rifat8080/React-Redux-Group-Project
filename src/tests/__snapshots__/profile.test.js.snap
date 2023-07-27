@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<section
+  className="myProfile"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="row justify-content-evenly"
+    >
+      <div
+        className="col-12"
+      >
+        <h1
+          className="p-1"
+        >
+          My Missions
+        </h1>
+        <div>
+          No Missions Joined
+        </div>
+        <div />
+      </div>
+    </div>
+  </div>
+  <div
+    className="rockets-profile"
+  >
+    <h2>
+      My Rockets
+    </h2>
+    <p>
+      No Rockets Reserved
+    </p>
+    <ul
+      className="borderLi"
+    />
+  </div>
+</section>
+`;
