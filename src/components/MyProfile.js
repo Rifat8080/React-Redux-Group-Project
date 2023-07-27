@@ -7,7 +7,9 @@ const MyProfile = () => {
   const missionsStore = useSelector((state) => state.missions);
   const { missions } = missionsStore;
   const myMissions = missions.filter((mission) => mission.joined === true);
-  const reservedRockets = useSelector((state) => state.rockets.rockets.filter((rocket) => rocket.reserved === true));
+  const reservedRockets = useSelector((state) =>
+    state.rockets.rockets.filter((rocket) => rocket.reserved === true)
+  );
 
   return (
     <section className="myProfile">

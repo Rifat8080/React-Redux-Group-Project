@@ -1,75 +1,48 @@
-/* eslint-disable max-len */
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const initialState = {
-  rockets: [],
-  isLoading: true,
-  error: '',
+const ALL_ROCKETS = 'space travelers/redux/rockets/ALL_ROCKETS';
+const RESERVE_ROCKET = 'space travelers/redux/rockets/RESERVE_ROCKET';
+
+export const rocketsReducer = (
+  state = { status: 'default', rockets: [] },
+  action,
+) => {
+  switch (action.type) {
+    case `${ALL_ROCKETS}/fulfilled`:
+      return { status: 'succeeded', rockets: action.payload };
+
+    case RESERVE_ROCKET: {
+      const newState = state.rockets.map((rocket) => (rocket.id === action.id
+        ? { ...rocket, reserved: !rocket.reserved }
+        : rocket));
+      return { ...state, rockets: newState };
+    }
+
+    default:
+      return state;
+  }
 };
 
-const url = 'https://api.spacexdata.com/v3/rockets';
-
-export const fetchRockets = createAsyncThunk(
-  'rockets/fetchRockets',
-  async () => {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data.map((rocket) => ({
-      id: rocket.id,
-      name: rocket.rocket_name,
-      type: rocket.rocket_type,
-      flickr_images: rocket.flickr_images,
-      text: rocket.description,
-      reserved: false,
-    }));
-  },
-);
-
-const rocketsSlice = createSlice({
-  name: 'rockets',
-  initialState,
-  reducers: {
-    reserveRocket: (state, action) => {
-      const { rocketId } = action.payload;
-      const rocket = state.rockets.find((rocket) => rocket.id === rocketId);
-      if (rocket) {
-        rocket.reserved = true;
-        localStorage.setItem('rocketsData', JSON.stringify(state.rockets));
-      }
-    },
-    cancelReserveRocket: (state, action) => {
-      const { rocketId } = action.payload;
-      const rocket = state.rockets.find((rocket) => rocket.id === rocketId);
-      if (rocket) {
-        rocket.reserved = false;
-        localStorage.setItem('rocketsData', JSON.stringify(state.rockets));
-      }
-    },
-    initializeReservedRockets: (state) => {
-      const storedData = localStorage.getItem('rocketsData');
-      if (storedData) {
-        const rocketsData = JSON.parse(storedData);
-        state.rockets = rocketsData;
-      }
-      state.isLoading = false;
-    },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchRockets.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchRockets.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.rockets = action.payload;
-      })
-      .addCase(fetchRockets.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.error.message;
+export const fetchRockets = createAsyncThunk(ALL_ROCKETS, async () => {
+  const data = [];
+  await fetch('https://api.spacexdata.com/v3/rockets')
+    .then((res) => res.json())
+    .then((json) => {
+      json.forEach((i) => {
+        data.push({
+          id: i.id,
+          name: i.rocket_name,
+          type: i.rocket_type,
+          flickr_images: i.flickr_images,
+          description: i.description,
+          reserved: false,
+        });
       });
-  },
+    });
+  return data;
 });
 
-export const { reserveRocket, cancelReserveRocket, initializeReservedRockets } = rocketsSlice.actions;
-
-export default rocketsSlice.reducer;
+export const reservation = (id) => ({
+  type: RESERVE_ROCKET,
+  id,
+});
