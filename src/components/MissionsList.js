@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { displayMissions, joinMission } from '../redux/missions/missionSlice';

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -8,18 +9,21 @@ const initialState = {
 
 const url = 'https://api.spacexdata.com/v3/rockets';
 
-export const fetchRockets = createAsyncThunk('rockets/fetchRockets', async () => {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data.map((rocket) => ({
-    id: rocket.id,
-    name: rocket.rocket_name,
-    type: rocket.rocket_type,
-    flickr_images: rocket.flickr_images,
-    text: rocket.description,
-    reserved: rocket.reserved,
-  }));
-});
+export const fetchRockets = createAsyncThunk(
+  'rockets/fetchRockets',
+  async () => {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.map((rocket) => ({
+      id: rocket.id,
+      name: rocket.rocket_name,
+      type: rocket.rocket_type,
+      flickr_images: rocket.flickr_images,
+      text: rocket.description,
+      reserved: false,
+    }));
+  },
+);
 
 const rocketsSlice = createSlice({
   name: 'rockets',
@@ -30,6 +34,7 @@ const rocketsSlice = createSlice({
       const rocket = state.rockets.find((rocket) => rocket.id === rocketId);
       if (rocket) {
         rocket.reserved = true;
+        localStorage.setItem('rocketsData', JSON.stringify(state.rockets));
       }
     },
     cancelReserveRocket: (state, action) => {
@@ -37,7 +42,16 @@ const rocketsSlice = createSlice({
       const rocket = state.rockets.find((rocket) => rocket.id === rocketId);
       if (rocket) {
         rocket.reserved = false;
+        localStorage.setItem('rocketsData', JSON.stringify(state.rockets));
       }
+    },
+    initializeReservedRockets: (state) => {
+      const storedData = localStorage.getItem('rocketsData');
+      if (storedData) {
+        const rocketsData = JSON.parse(storedData);
+        state.rockets = rocketsData;
+      }
+      state.isLoading = false;
     },
   },
   extraReducers: (builder) => {
@@ -56,6 +70,6 @@ const rocketsSlice = createSlice({
   },
 });
 
-export const { reserveRocket, cancelReserveRocket } = rocketsSlice.actions;
+export const { reserveRocket, cancelReserveRocket, initializeReservedRockets } = rocketsSlice.actions;
 
 export default rocketsSlice.reducer;
