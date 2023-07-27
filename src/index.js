@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '@fontsource/public-sans';
@@ -13,5 +14,5 @@ root.render(
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

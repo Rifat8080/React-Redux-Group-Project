@@ -13,33 +13,24 @@ const Navbar = () => {
       path: '/missions',
       text: 'Missions',
     },
-    {
-      id: 3,
-      path: '/my-profile',
-      text: 'My Profile',
-    },
   ];
-
   return (
     <header>
-      <nav className="navbar">
-        <div className="logo">
+      <nav className="p-3" style={{ boxShadow: '1px 1px whitesmoke' }}>
+        <h1>
           <img src={planet} alt="Logo" />
-          <h1>
-            <a href="/">Space Traveler&apos;s Hub</a>
-          </h1>
-        </div>
-        <ul className="ulElement">
+          Space travelers&apos; hub
+        </h1>
+        <ul className="conatiner align-items-center m-0">
           {links.map((link) => (
-            <li key={link.id} className="nav-link active">
-              <NavLink
-                style={{ textDecoration: 'none', color: 'blue' }}
-                to={link.path}
-              >
-                {link.text}
-              </NavLink>
+            <li key={link.id} className="nav-link">
+              <NavLink to={link.path}>{link.text}</NavLink>
             </li>
           ))}
+          <li>|</li>
+          <li className="nav-link">
+            <NavLink to="/myProfile">My Profile</NavLink>
+          </li>
         </ul>
       </nav>
     </header>

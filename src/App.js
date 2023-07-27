@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -12,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Rockets />} />
         <Route path="/missions" element={<MissionsList />} />
-        <Route path="/my-profile" element={<MyProfile />} />
+        <Route path="/myProfile/*" element={<MyProfile />} />
       </Routes>
     </Router>
   );
