@@ -14,6 +14,7 @@
   - [Built With ](#built-with-)
   - [Tech stack ](#tech-stack-)
     - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -54,6 +55,14 @@ This project is built with:
 - Display a list of all available SpaceX rockets
 - Book a rocket and cancel a booking
 - Join or leave a mission
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LIVE DEMO -->
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+[click here](https://space-traveler-hub-project.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
