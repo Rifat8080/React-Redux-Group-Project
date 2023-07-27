@@ -1,52 +1,59 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRockets, toggleReservation } from '../redux/rockets/rocketsSlice';
+import { fetchRockets, reservation } from '../redux/rockets/rocketsSlice';
 
 const Rockets = () => {
-  const rockets = useSelector((state) => state.rockets.rockets);
-
+  const allRockets = useSelector((state) => state.rockets);
+  const { status, rockets } = allRockets;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchRockets());
-  }, [dispatch]);
-
-  const toggleReserved = (id) => {
-    const rocket = rockets.find((r) => r.id === id);
-    if (rocket) {
-      dispatch(
-        toggleReservation({ rocketId: id, isReserved: !rocket.reserved }),
-      );
+    if (status === 'default') {
+      dispatch(fetchRockets());
     }
+  }, [dispatch, status]);
+
+  const handleClick = (id) => {
+    dispatch(reservation(id));
   };
 
   return (
-    <section className="container-rocket">
-      <ul className="cards">
-        {rockets.map((list) => (
-          <li className="card" key={list.id}>
-            <img src={list.flickr_images[0]} alt={list.name} />
-            <div className="card-txt">
-              <h3>{list.name}</h3>
-              <p>
-                {list.reserved && <span className="reserved">Reserved</span>}
-                {list.text}
-              </p>
-              <button
-                type="button"
-                className="btn"
-                onClick={() => toggleReserved(list.id)}
-              >
-                {list.reserved ? (
-                  <span className="cancel">Cancel Reservation</span>
-                ) : (
-                  <span className="reserve">Reserve Rocket</span>
-                )}
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <ul className="container">
+      {rockets.map((rocket) => (
+        <li key={rocket.id} className="d-flex p-3">
+          <div className="px-4">
+            <img
+              src={rocket.flickr_images[0]}
+              alt="rocket"
+              style={{ width: '250px', height: '200px' }}
+              className="p-0"
+            />
+          </div>
+          <div>
+            <h2 style={{ fontSize: '1.51em' }}>{rocket.name}</h2>
+            <p>
+              {rocket.reserved && (
+                <span className="badge me-2" style={{ background: 'darkcyan' }}>
+                  Reserved
+                </span>
+              )}
+              {rocket.description}
+            </p>
+            <button
+              type="button"
+              className={
+                !rocket.reserved
+                  ? 'btn btn-primary'
+                  : 'btn btn-outline-secondary'
+              }
+              onClick={() => handleClick(rocket.id)}
+            >
+              {rocket.reserved && 'Cancel Reservation'}
+              {!rocket.reserved && 'Reserve Rocket'}
+            </button>
+          </div>
+        </li>
+      ))}
+    </ul>
   );
 };
 
