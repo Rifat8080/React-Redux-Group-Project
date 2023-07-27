@@ -46,7 +46,7 @@ nav ul {
 
 /****** Rockets profile start here ********/
 
-.myProfile{
+.myProfile {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
@@ -60,11 +60,11 @@ nav ul {
   margin-top: 1rem;
 }
 
-.borderLi{
+.borderLi {
   margin-top: 1rem;
 }
 
-.borderLi li{
+.borderLi li {
   list-style: none;
   width: 100%;
   border: 1px solid #ccc;
