@@ -43,3 +43,33 @@ nav ul {
   text-align: center;
   border-radius: 5px;
 }
+
+/****** Rockets profile start here ********/
+
+.myProfile{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+
+.rockets-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.borderLi{
+  margin-top: 1rem;
+}
+
+.borderLi li{
+  list-style: none;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 1rem 10rem;
+}
+
+
+/****** Rockets profile end here ********/
